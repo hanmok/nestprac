@@ -1,3 +1,5 @@
+
+
 import { 
 	CanActivate, 
 	ExecutionContext
@@ -11,3 +13,4 @@ export class AuthGuard implements CanActivate {
 		return request.session.userId;
 	}
 }
+

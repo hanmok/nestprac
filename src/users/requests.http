@@ -1,18 +1,18 @@
  ### Create a new user
 POST http://localhost:3000/auth/signup
 content-type: application/json
- 
- {
+
+{
 	"email": "testasd4@test.com",
 	"password": "asdklfmkl"
- }
+}
 
 ### Sign in as an existing user
 POST http://localhost:3000/auth/signin
 content-type: application/json
  
  {
-	"email": "test@test.com",
+	"email": "testasd4@test.com",
 	"password": "asdklfmkl"
  }
 

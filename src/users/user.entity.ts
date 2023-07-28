@@ -1,5 +1,16 @@
-import { Entity, Column, PrimaryGeneratedColumn, AfterInsert, AfterRemove, AfterUpdate } from 'typeorm';
+import { Entity, 
+	Column, 
+	PrimaryGeneratedColumn, 
+	AfterInsert, 
+	AfterRemove, 
+	AfterUpdate,
+	OneToMany
+} from 'typeorm';
+
+import { Report } from '../reports/report.entity';
 // import { Exclude } from 'class-transformer';
+
+console.log(Report);
 
 @Entity()
 export class User { // Convention. (or UserEntity)
@@ -11,6 +22,12 @@ export class User { // Convention. (or UserEntity)
 
 	@Column()
 	password: string;
+
+	@Column({ default: true})
+	admin: boolean;
+
+	@OneToMany(() => Report, (report) => report.user)
+	reports: Report[];
 
 	// Hook ups
 	@AfterInsert() 
