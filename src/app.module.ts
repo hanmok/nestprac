@@ -101,8 +101,9 @@ import { UsersModule } from './users/users.module';
 import { ReportsModule } from './reports/reports.module';
 import { User } from './users/user.entity';
 import { Report } from './reports/report.entity';
+import { TypeOrmConfigService } from './config/typeorm.config';
 const cookieSession = require('cookie-session');
-const dbConfig = require('../ormconfig');
+// const dbConfig = require('../ormconfig');
 
 @Module({
   imports: [
@@ -110,7 +111,9 @@ const dbConfig = require('../ormconfig');
       isGlobal: true,
       envFilePath: `.env.${process.env.NODE_ENV}`,
     }),
-    TypeOrmModule.forRoot(dbConfig),
+    TypeOrmModule.forRootAsync({
+      useClass: TypeOrmConfigService
+    }),
     UsersModule,
     ReportsModule,
   ],
